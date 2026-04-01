@@ -31,6 +31,6 @@ jobs:
         run: |
           xcodebuild \
           -workspace ios/ZNBS MLIS.xcworkspace \
-          -scheme "ZNBS MLIS" \
+          -scheme 'ZNBS MLIS' \
           -configuration Release \
           -sdk iphoneos
