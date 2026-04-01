@@ -30,7 +30,7 @@ jobs:
       - name: Build iOS app
         run: |
           xcodebuild \
-          -workspace ios/YourApp.xcworkspace \
-          -scheme ZNBS MLIS \
+          -workspace ios/ZNBS MLIS.xcworkspace \
+          -scheme "ZNBS MLIS" \
           -configuration Release \
           -sdk iphoneos
