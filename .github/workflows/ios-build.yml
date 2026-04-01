@@ -9,30 +9,28 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
 
       - name: Install npm dependencies
         run: npm install
 
+      - name: Show iOS structure
+        run: ls -R ios
+
       - name: Install CocoaPods
         run: |
-          cd ios/CoinMob
+          cd ios
           pod install
-          cd ../..
+          cd ..
 
-      - name: Build iOS app
+      - name: Build iOS
         run: |
           xcodebuild \
-          -workspace ios/CoinMob/CoinMob.xcworkspace \
+          -workspace ios/CoinMob.xcworkspace \
           -scheme CoinMob \
           -configuration Release \
           -sdk iphoneos
-
-      - name: List build products
-        run: ls -R ios/CoinMob/build
