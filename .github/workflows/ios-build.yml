@@ -12,25 +12,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Install npm dependencies
         run: npm install
 
       - name: Install CocoaPods
         run: |
-          cd ios
+          cd ios/CoinMob
           pod install
-          cd ..
+          cd ../..
 
       - name: Build iOS app
         run: |
           xcodebuild \
-          -workspace "ios/ZNBS MLIS.xcworkspace" \
-          -scheme "ZNBS MLIS" \
+          -workspace ios/CoinMob/CoinMob.xcworkspace \
+          -scheme CoinMob \
           -configuration Release \
-          -sdk iphoneos \
-          -allowProvisioningUpdates
+          -sdk iphoneos
+
+      - name: List build products
+        run: ls -R ios/CoinMob/build
