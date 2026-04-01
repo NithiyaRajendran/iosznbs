@@ -18,9 +18,6 @@ jobs:
       - name: Install npm dependencies
         run: npm install
 
-      - name: Show iOS structure
-        run: ls -R ios
-
       - name: Install CocoaPods
         run: |
           cd ios
@@ -33,4 +30,5 @@ jobs:
           -workspace ios/CoinMob.xcworkspace \
           -scheme CoinMob \
           -configuration Release \
-          -sdk iphoneos
+          -sdk iphoneos \
+          CODE_SIGNING_ALLOWED=NO
